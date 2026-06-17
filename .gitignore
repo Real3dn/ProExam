@@ -1,0 +1,36 @@
+# Virtual Environments
+venv/
+.venv/
+env/
+
+# Node.js
+frontend/node_modules/
+node_modules/
+npm-debug.log*
+yarn-error.log*
+yarn-debug.log*
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environment Variables & Secrets (Tokens, Keys, etc.)
+.env
+.env.*
+*.pem
+*.key
+secrets.json
+credentials.json
+token.json
+tokens.json
+
+# IDEs and OS files
+.idea/
+.vscode/
+.DS_Store
+
+# Build & Logs
+build/
+dist/
+*.log

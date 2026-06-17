@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Outfit', 'Inter', 'system-ui', 'sans-serif';
+  
+  --color-brand-50: #f0f7ff;
+  --color-brand-100: #e0effe;
+  --color-brand-200: #bae0fd;
+  --color-brand-300: #7cc7fb;
+  --color-brand-400: #38aaf7;
+  --color-brand-500: #0e8fe5;
+  --color-brand-600: #0271c2;
+  --color-brand-700: #035a9e;
+  --color-brand-800: #074c82;
+  --color-brand-900: #0c406d;
+  --color-brand-950: #082949;
+}
+
+body {
+  @apply bg-slate-900 text-slate-100 antialiased font-sans;
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(15, 118, 110, 0.15) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(99, 102, 241, 0.15) 0px, transparent 50%);
+  background-attachment: fixed;
+}
+
+/* Custom scrollbar styling for a sleeker dashboard/chat window */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(51, 65, 85, 0.6);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(71, 85, 105, 0.8);
+}
