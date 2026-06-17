@@ -1,0 +1,1 @@
+This is a sample text file contents. It should be extracted and chunked correctly.

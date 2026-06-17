@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import client from '../api/client';
 import { FileText, Calendar, MessageSquare, Trash2, Loader2, Sparkles } from 'lucide-react';
+import QuizSetupModal from './QuizSetupModal';
 
 const DocumentCard = ({ doc, onDeleteSuccess }) => {
   const [deleting, setDeleting] = useState(false);
   const [chatStarting, setChatStarting] = useState(false);
+  const [showSetup, setShowSetup] = useState(false);
   const navigate = useNavigate();
 
   const getFormatIcon = (type) => {
@@ -82,20 +84,38 @@ const DocumentCard = ({ doc, onDeleteSuccess }) => {
         </div>
       </div>
 
-      <button
-        onClick={handleStartChat}
-        disabled={chatStarting}
-        className="w-full mt-6 bg-slate-800/80 hover:bg-brand-600 border border-slate-700 hover:border-brand-500 text-slate-350 hover:text-white font-semibold py-2 px-4 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 text-sm disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98]"
-      >
-        {chatStarting ? (
-          <Loader2 className="w-4 h-4 animate-spin" />
-        ) : (
-          <>
-            <MessageSquare className="w-4 h-4 text-brand-400 group-hover:text-white transition-colors" />
-            <span>AI Chat</span>
-          </>
-        )}
-      </button>
+      <div className="flex gap-3 mt-6">
+        <button
+          onClick={handleStartChat}
+          disabled={chatStarting || deleting}
+          className="flex-1 bg-slate-800/80 hover:bg-brand-600 border border-slate-700 hover:border-brand-500 text-slate-350 hover:text-white font-semibold py-2 px-3 rounded-xl transition-all duration-200 flex items-center justify-center gap-1.5 text-sm disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] cursor-pointer"
+        >
+          {chatStarting ? (
+            <Loader2 className="w-4 h-4 animate-spin" />
+          ) : (
+            <>
+              <MessageSquare className="w-4 h-4 text-brand-400 group-hover:text-white transition-colors" />
+              <span>AI Chat</span>
+            </>
+          )}
+        </button>
+
+        <button
+          onClick={() => setShowSetup(true)}
+          disabled={chatStarting || deleting}
+          className="flex-1 bg-slate-800/80 hover:bg-emerald-600 border border-slate-700 hover:border-emerald-500 text-slate-350 hover:text-white font-semibold py-2 px-3 rounded-xl transition-all duration-200 flex items-center justify-center gap-1.5 text-sm disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] cursor-pointer"
+        >
+          <Sparkles className="w-4 h-4 text-emerald-450 group-hover:text-white transition-colors" />
+          <span>MCQ Exam</span>
+        </button>
+      </div>
+
+      <QuizSetupModal
+        isOpen={showSetup}
+        onClose={() => setShowSetup(false)}
+        documentId={doc.id}
+        documentTitle={doc.title}
+      />
     </div>
   );
 };

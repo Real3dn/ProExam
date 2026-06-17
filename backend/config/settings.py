@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'documents.apps.DocumentsConfig',
     'chat.apps.ChatConfig',
+    'quiz.apps.QuizConfig',
 ]
 
 MIDDLEWARE = [

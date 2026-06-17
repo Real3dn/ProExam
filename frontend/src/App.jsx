@@ -5,6 +5,7 @@ import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import DashboardPage from './pages/DashboardPage';
 import ChatPage from './pages/ChatPage';
+import QuizPage from './pages/QuizPage';
 import { Loader2 } from 'lucide-react';
 
 const ProtectedRoute = ({ children }) => {
@@ -80,6 +81,14 @@ function App() {
             element={
               <ProtectedRoute>
                 <ChatPage />
+              </ProtectedRoute>
+            } 
+          />
+          <Route 
+            path="/quiz/:sessionId" 
+            element={
+              <ProtectedRoute>
+                <QuizPage />
               </ProtectedRoute>
             } 
           />

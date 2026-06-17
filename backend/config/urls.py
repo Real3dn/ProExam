@@ -24,6 +24,7 @@ urlpatterns = [
     path('api/auth/', include('users.urls')),
     path('api/documents/', include('documents.urls')),
     path('api/chats/', include('chat.urls')),
+    path('api/quiz/', include('quiz.urls')),
 ]
 
 if settings.DEBUG:
